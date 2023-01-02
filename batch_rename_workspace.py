@@ -14,8 +14,8 @@ class BatchRenameWorkspaceException(Exception):
         return 'Exception: ' + self.error_msg
 
 
-def get_number_of_booleans(bool_list):
-	return sum(bool(i) for i in bool_list)
+def count_true_values(l):
+	return sum(bool(i) for i in l)
 
 
 if __name__ == '__main__':
@@ -42,12 +42,12 @@ if __name__ == '__main__':
         arcpy.AddError(err_msg)
         raise BatchRenameWorkspaceException(err_msg)
 
-    if get_number_of_booleans([is_ds, is_fc, is_field_name, is_field_alias]) == 0:
+    if count_true_values([is_ds, is_fc, is_field_name, is_field_alias]) == 0:
         err_msg = "Error - no dataset type selected"
         arcpy.AddError(err_msg)
         raise BatchRenameWorkspaceException(err_msg)
 
-    if get_number_of_booleans([is_lowercase, is_title, is_uppercase, is_sentence]) > 1:
+    if count_true_values([is_lowercase, is_title, is_uppercase, is_sentence]) > 1:
         err_msg = "Error - select either lowercase, title case, uppercase or none"
         arcpy.AddError(err_msg)
         raise BatchRenameWorkspaceException(err_msg)
