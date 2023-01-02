@@ -14,8 +14,8 @@ class BatchRenameWorkspaceException(Exception):
         return 'Exception: ' + self.error_msg
 
 
-def get_number_of_booleans(lst):
-	return sum(bool(x) for x in lst)
+def get_number_of_booleans(bool_list):
+	return sum(bool(i) for i in bool_list)
 
 
 if __name__ == '__main__':
